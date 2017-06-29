@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1498712695 source:/home/ayres/project/interview/StringGenerator/StringGenerator.cpp
+	<cstdlib>
+	<stdio.h>
+	<string.h>
+	<stdarg.h>
+	<cctype>
+	<boost/bind.hpp>
+	"boost/lexical_cast.hpp"
+	<boost/shared_ptr.hpp>
+	<boost/thread.hpp>
+	<map>
+	<deque>
+	<vector>
+
+1498745522 source:/home/ayres/project/interview/StringProcessor/StringProcessor.cpp
+	<windows.h>
+	<cstdlib>
+	<stdio.h>
+	<string.h>
+	<stdarg.h>
+	<cctype>
+	<boost/bind.hpp>
+	"boost/lexical_cast.hpp"
+	<boost/shared_ptr.hpp>
+	<boost/thread.hpp>
+	<map>
+	<deque>
+	<vector>
+	<string>
+	<iostream>
+	<fstream>
+	<boost/filesystem.hpp>
+

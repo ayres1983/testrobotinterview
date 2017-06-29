@@ -1,0 +1,46 @@
+function Navigation(start, goal,node_map)
+    //init the node_table
+	//1.turn a map into a coordinate axes based table, each position of the map became to the point node of the table
+	//2.fill state to each node of the node table
+		//a) x,y e.g. 0,1
+		//b) A if this point accessable(it's an space or obstacles)
+		//c) has visit this point
+		//d) G = real cost from start point to this point, init to 0
+		//e) H = estimated cost from this point to goal point (H = ABS(goal.x - thispoint.x) +  ABS(goal.y - thispoint.y))
+		//f) F = H + G  (default set to H)
+		//g) comefrom = record which this node come from, so that we can reverse compute the path when we find the final node.
+	
+	init node_table[] with node_map
+	
+    // create a currently discovered nodes set and push start node as init
+    open_set.add(start)
+	
+    while open_set is not empty
+	{
+        cur_node = pop_front(pick up and remove form the set) the first node of open_set //which has the lowest F(the estimated cost)
+		
+        if cur_node == goal
+            return computingPath(cur_node);//reverse compute the path with cur_node->comefrom->comefrom->....->comefrom
+
+        
+        for each neighbor_node of cur_node (find 8 directions of neighbors)
+		{
+            if neighbor_node  not accessable// ignore the neighbor which is obstacle
+                continue	
+
+            if neighbor_node has visited // ignore the neighbor which is already visit.
+                continue					
+			
+			mark neighbor_node as visited
+			
+            if neighbor_node not in open_set	//  a new node and not visited
+				neighbor_node.comefrom = cur_node
+				//computing the distance from cur_node to the neighbor dis2 = x2 + y2
+				neighbor_node.G = cur_node.G + sqrt(square(ABS(neighbor_node.x - cur_node.x)) +  square(ABS(neighbor_node.y - cur_node.y))) 
+				neighbor_node.F = neighbor_node.G + neighbor_node.H
+                open_set.Add(neighbor_node)
+				open_set.sort() // order by F ASC , put the node contains lowest F to the top/front.
+            
+		}
+	}
+    return fail

@@ -1,0 +1,32 @@
+#1.install boost
+#install boost referenced package.
+sudo apt-get install mpi-default-dev # mpi related
+sudo apt-get install libicu-dev # regular expresion related
+sudo apt-get install python-dev # python dev related
+sudo apt-get install libbz2-dev # resolve boost compile issue
+
+#if install not correct try update apt-get
+sudo apt-get update
+
+#install curl to download boost
+sudo apt-get install curl
+
+#download boost package
+curl -O https://nchc.dl.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.tar.bz2
+
+#compile boost package
+tar -xf ./boost_1_58_0.tar.bz2 
+cd boost_1_58_0/
+./bootstrap.sh
+./b2 -a -sHAVE_ICU=1 # the parameter means that it support icu or unicode
+sudo ./b2 install
+
+#now we can compile our code
+cd StringGenerator
+make
+cd StringProcessor
+make
+
+#output bin file is on StringGenerator/bin/release and StringProcessor/bin/release
+
+
